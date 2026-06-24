@@ -103,10 +103,32 @@
         <figure class="figure">
           <img src="assets/motion_gate_intuition.png" alt="Flow direction distribution used to gate pose optimization">
           <figcaption>
-            Low direction dispersion indicates camera-dominant motion, so Track2Map updates the camera pose.
-            High dispersion indicates local deformation/tool motion, so Track2Map freezes pose updates to avoid drift.
+            Flow-direction dispersion provides a compact signal for deciding when camera pose should be optimized.
           </figcaption>
         </figure>
+        <div class="explain-grid">
+          <article class="explain-card">
+            <h3>Intuition</h3>
+            <p>
+              When the endoscope moves, tracked points tend to flow coherently. When the camera is static,
+              tool interaction and tissue deformation produce mixed, local directions.
+            </p>
+          </article>
+          <article class="explain-card">
+            <h3>Gating rule</h3>
+            <p>
+              Track2Map computes <span class="math">θ<sub>k</sub> = atan2(f<sub>k,y</sub>, f<sub>k,x</sub>)</span>
+              and enables pose updates only when <span class="math">σ<sub>θ</sub> ≤ τ</span>.
+            </p>
+          </article>
+          <article class="explain-card">
+            <h3>Why it matters</h3>
+            <p>
+              Freezing pose during high-dispersion periods prevents local tissue/tool motion from being absorbed
+              into the camera trajectory, reducing drift during online mapping.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
 
