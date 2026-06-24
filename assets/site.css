@@ -55,9 +55,9 @@ a:hover {
 }
 
 .hero-inner {
-  max-width: 1080px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 86px 28px 92px;
+  padding: 58px 28px 64px;
   text-align: center;
 }
 
@@ -78,9 +78,9 @@ h3 {
 }
 
 h1 {
-  max-width: 980px;
+  max-width: 1240px;
   margin: 0 auto 24px;
-  font-size: clamp(2.1rem, 5vw, 4.7rem);
+  font-size: clamp(2.05rem, 4.3vw, 4.35rem);
   letter-spacing: -0.055em;
 }
 
@@ -149,6 +149,10 @@ h3 {
   max-width: 1160px;
   margin: 0 auto;
   padding: 72px 28px;
+}
+
+#demo {
+  padding-top: 42px;
 }
 
 .section-heading {
@@ -381,8 +385,8 @@ footer {
   }
 
   .hero-inner {
-    padding-top: 60px;
-    padding-bottom: 66px;
+    padding-top: 46px;
+    padding-bottom: 50px;
   }
 
   .section {
