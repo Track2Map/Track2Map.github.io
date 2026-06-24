@@ -188,7 +188,8 @@ h3 {
 
 .cards,
 .metric-grid,
-.explain-grid {
+.explain-grid,
+.method-steps {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
@@ -197,6 +198,8 @@ h3 {
 .card,
 .metric,
 .explain-card,
+.step-card,
+.table-card,
 .figure,
 .video-wrap,
 pre {
@@ -222,6 +225,39 @@ pre {
 
 .explain-card {
   padding: 20px;
+}
+
+.method-steps {
+  margin-top: 22px;
+}
+
+.step-card {
+  position: relative;
+  padding: 24px 22px 22px 76px;
+}
+
+.step-card h3 {
+  margin-bottom: 8px;
+}
+
+.step-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.step-number {
+  position: absolute;
+  left: 22px;
+  top: 22px;
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--soft);
+  color: var(--accent);
+  font-weight: 850;
 }
 
 .math {
@@ -275,6 +311,77 @@ figcaption {
   margin-top: 8px;
   color: var(--muted);
   font-weight: 650;
+}
+
+.results-tables {
+  display: grid;
+  gap: 22px;
+  margin: 24px 0 30px;
+}
+
+.table-card {
+  padding: 24px;
+}
+
+.table-card h3 {
+  margin-bottom: 6px;
+}
+
+.table-note {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+  font-size: 0.94rem;
+}
+
+.compact-table table {
+  min-width: 560px;
+}
+
+th,
+td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+th {
+  color: #2e3342;
+  background: #f7f4ff;
+  font-weight: 800;
+}
+
+td,
+th {
+  text-align: right;
+}
+
+td:first-child,
+th:first-child {
+  text-align: left;
+}
+
+.recon-table td:nth-child(2),
+.recon-table th:nth-child(2) {
+  text-align: left;
+}
+
+tr.highlight {
+  background: rgba(110, 60, 196, 0.07);
+}
+
+tr.highlight td {
+  font-weight: 800;
 }
 
 .split {
@@ -342,6 +449,7 @@ footer {
   .cards,
   .metric-grid,
   .explain-grid,
+  .method-steps,
   .split {
     grid-template-columns: 1fr;
   }

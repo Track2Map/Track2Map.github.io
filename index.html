@@ -89,6 +89,23 @@
           when track statistics indicate camera-dominant motion.
         </figcaption>
       </figure>
+      <div class="method-steps">
+        <article class="step-card">
+          <span class="step-number">1</span>
+          <h3>Track</h3>
+          <p>Dense 2D correspondences are estimated online between consecutive surgical frames.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-number">2</span>
+          <h3>Lift &amp; gate</h3>
+          <p>Tracks are lifted with stereo depth into 3D anchors, while flow-direction spread decides whether pose updates are safe.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-number">3</span>
+          <h3>Map</h3>
+          <p>Anchors initialize deformation, and online 3DGS optimization refines the scene and the camera pose when enabled.</p>
+        </article>
+      </div>
       <div class="method-detail">
         <div class="section-heading compact">
           <h2>How Track2Map separates camera motion from tissue motion</h2>
@@ -153,6 +170,63 @@
           <span class="metric-value">0.290°</span>
           <span class="metric-label">Relative rotation error</span>
         </div>
+      </div>
+
+      <div class="results-tables">
+        <article class="table-card recon-table">
+          <h3>Reconstruction quality on StereoMIS</h3>
+          <p class="table-note">Track2Map improves reconstruction across absent, noisy, and clean pose-prior regimes.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pose Init</th>
+                  <th>Method</th>
+                  <th>PSNR ↑</th>
+                  <th>SSIM ↑</th>
+                  <th>LPIPS ↓</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>None</td><td>Endo-2DTAM</td><td>15.15</td><td>0.350</td><td>0.550</td></tr>
+                <tr><td>None</td><td>EndoGSLAM-H</td><td>16.67</td><td>0.520</td><td>0.450</td></tr>
+                <tr><td>None</td><td>ESLAM</td><td>18.70</td><td>0.540</td><td>0.570</td></tr>
+                <tr><td>None</td><td>EndoSD-SLAM</td><td>19.56</td><td>0.650</td><td>0.310</td></tr>
+                <tr><td>None</td><td>EndoFlow-SLAM</td><td>21.96</td><td>0.590</td><td><strong>0.270</strong></td></tr>
+                <tr><td>None</td><td>Track2Map (Monocular)</td><td>26.70</td><td>0.700</td><td>0.310</td></tr>
+                <tr class="highlight"><td>None</td><td>Track2Map (Stereo)</td><td>27.58</td><td>0.745</td><td>0.274</td></tr>
+                <tr><td>Noisy</td><td>Online-endo-track (light)</td><td>27.31</td><td>0.727</td><td>0.349</td></tr>
+                <tr><td>Noisy</td><td>Online-endo-track (heavy)</td><td>24.78</td><td>0.661</td><td>0.452</td></tr>
+                <tr class="highlight"><td>Noisy</td><td>Track2Map (Stereo, light)</td><td>27.68</td><td>0.747</td><td>0.276</td></tr>
+                <tr class="highlight"><td>Noisy</td><td>Track2Map (Stereo, heavy)</td><td>27.56</td><td>0.742</td><td>0.302</td></tr>
+                <tr><td>Clean</td><td>Online-endo-track</td><td>27.58</td><td>0.744</td><td>0.235</td></tr>
+                <tr class="highlight"><td>Clean</td><td>Track2Map (Stereo)</td><td>27.83</td><td>0.750</td><td>0.201</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="table-card compact-table">
+          <h3>Camera pose estimation</h3>
+          <p class="table-note">Lower is better for absolute trajectory error and relative pose error.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>ATE (m) ↓</th>
+                  <th>RPE<sub>r</sub> (deg) ↓</th>
+                  <th>RPE<sub>t</sub> (m) ↓</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>EndoGSLAM-H</td><td>0.1077</td><td>2.4840</td><td>0.0131</td></tr>
+                <tr><td>Endo3R</td><td>0.0897</td><td>3.4796</td><td>0.0354</td></tr>
+                <tr class="highlight"><td>Track2Map</td><td>0.0285</td><td>0.2903</td><td>0.0061</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
       </div>
 
       <div class="split">
