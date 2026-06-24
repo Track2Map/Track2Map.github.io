@@ -89,6 +89,25 @@
           when track statistics indicate camera-dominant motion.
         </figcaption>
       </figure>
+      <div class="method-detail">
+        <div class="section-heading compact">
+          <p class="eyebrow">Motion Gate</p>
+          <h2>How Track2Map separates camera motion from tissue motion</h2>
+          <p>
+            We use dense 2D track directions as a lightweight surgical motion prior. Camera motion tends
+            to produce a coherent direction distribution, while local tissue/tool motion produces a broad
+            or multi-modal distribution. Pose optimization is enabled only when the circular standard
+            deviation of track directions is below a threshold.
+          </p>
+        </div>
+        <figure class="figure">
+          <img src="assets/motion_gate_intuition.png" alt="Flow direction distribution used to gate pose optimization">
+          <figcaption>
+            Low direction dispersion indicates camera-dominant motion, so Track2Map updates the camera pose.
+            High dispersion indicates local deformation/tool motion, so Track2Map freezes pose updates to avoid drift.
+          </figcaption>
+        </figure>
+      </div>
     </section>
 
     <section id="results" class="section">
