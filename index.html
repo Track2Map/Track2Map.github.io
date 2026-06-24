@@ -100,7 +100,7 @@
           </p>
         </div>
         <figure class="figure">
-          <img src="assets/motion_gate_intuition.png" alt="Flow direction distribution used to gate pose optimization">
+          <img src="assets/motion_gate_intuition_v2.png" alt="Flow direction distribution used to gate pose optimization">
           <figcaption>
             Flow-direction dispersion provides a compact signal for deciding when camera pose should be optimized.
           </figcaption>
@@ -116,8 +116,8 @@
           <article class="explain-card">
             <h3>Gating rule</h3>
             <p>
-              Track2Map computes <span class="math">θ<sub>k</sub> = atan2(f<sub>k,y</sub>, f<sub>k,x</sub>)</span>
-              and enables pose updates only when <span class="math">σ<sub>θ</sub> ≤ τ</span>.
+              Track2Map checks whether most tracks move in a similar direction. If the direction spread is low,
+              it updates the camera pose; if the spread is high, it freezes the pose and lets deformation explain the motion.
             </p>
           </article>
           <article class="explain-card">
