@@ -104,8 +104,15 @@ h3 {
 }
 
 .affiliations {
+  margin: 0 auto 6px;
+  color: var(--muted);
+}
+
+.equal-contribution {
   margin: 0 auto 30px;
   color: var(--muted);
+  font-size: 0.92rem;
+  font-style: italic;
 }
 
 .buttons {
