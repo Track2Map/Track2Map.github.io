@@ -7,7 +7,7 @@ This folder contains the static GitHub Pages project page for Track2Map.
 From the repository root:
 
 ```bash
-python3 -m http.server 8000 --directory docs
+python3 -m http.server 8000
 ```
 
 Then open:
@@ -22,17 +22,19 @@ In the GitHub repository settings:
 
 1. Go to `Settings` → `Pages`.
 2. Set `Source` to `Deploy from a branch`.
-3. Select branch `main` and folder `/docs`.
+3. Select branch `main` and folder `/ (root)`.
 4. Save.
 
-The expected project page URL is:
+The project page URL is:
 
 ```text
-https://styufo.github.io/Track2Map/
+https://track2map.github.io/
 ```
 
-## Assets to update before final release
+## Publication links
 
-- Replace the placeholder PDF button in `index.html` with the arXiv/PDF link once available.
-- Replace the BibTeX block in `index.html` once Springer/arXiv metadata is available.
-- Optionally add an arXiv / DOI / dataset link button when available.
+The page tracks the published version of the paper:
+
+- `Paper` button → Springer, MICCAI 2026 proceedings (LNCS), DOI `10.1007/978-3-032-38236-8_52`.
+- `arXiv` button → preprint `arXiv:2607.08408`.
+- The BibTeX block in `index.html` cites the published Springer version (pages 542–552).
